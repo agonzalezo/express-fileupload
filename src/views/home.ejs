@@ -1,0 +1,57 @@
+<% include partials/_head %>
+<br>
+<div class="alert alert-dismissible alert-info" style="display:<%=estado%>; max-width:30rem;">
+    <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
+    <strong> <span class="badge badge-pill badge-info">Info</span> <%= mensaje %> </strong>
+    <hr>
+</div>
+<div class="row">
+
+    <div class="card text-white bg-success mb-3; col-lg-6;" style="max-width:23rem;">
+        <div class="card-header">Carga de archivos</div>
+        <div class="card-body">
+            <h4 class="card-title">Subiras los archivos por node-js</h4>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <div class="custom-file">
+                        <label class="custom-file-label" for="inputfile" id="Label1">Selecciona un archivo</label>
+                        <input type="file" class="custom-file-input" id="inputfile" name="filename" required>
+                    </div>
+                    <br>
+                </div>
+                <button class="btn btn-info"><i class="fas fa-file-upload"></i> Upload</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="card; col-lg-6;" style="max-width:40rem">
+        <div class="card-body">
+            <h4>files in the server</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">File</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <% //console.log("tamaño del array ",data.length) %> -->
+                    <% if (data) { %>
+                    <% for(var i = 0; i < data.length; i++) { %>
+                    <tr class="table-success">
+                        <th scope="row"><%= data[i].name%></th>
+                        <td><%= data[i].size%>Bytes</td>
+                        <td><%= data[i].date %></td>
+                    </tr>
+                    <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<script src="/myjs.js"></script>
+<% include partials/_footer %>

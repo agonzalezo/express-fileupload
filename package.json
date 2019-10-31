@@ -1,0 +1,21 @@
+{
+  "name": "FileUploadNode_v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6-alpha.5",
+    "file-upload": "0.0.0",
+    "morgan": "^1.9.1",
+    "serve-favicon": "^2.5.0"
+  }
+}
