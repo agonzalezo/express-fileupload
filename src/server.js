@@ -6,10 +6,10 @@ const
     os = require("os"),
     backend = require("./routes/backend.js");
     favicon = require("serve-favicon")
-    // port = process.env.PORT || 80;
+    // port = process.env.PORT || 10080;
 
 //Configuration
-app.set("port", process.env.PORT || 80);
+app.set("port", process.env.PORT || 10080);
 app.set("views", __dirname+"/views");
 app.set("view engine", "ejs");
 
