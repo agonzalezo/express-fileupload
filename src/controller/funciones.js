@@ -20,14 +20,21 @@ funciones.upload = (req, res) => {
     file.mv(__dirname + "/files/" + fname, (err) => {
         //    if (err) res.status(400).send("Falla al cargar el archvio "+fname);
         if (err) {
-            respuesta = `Error al cargar el archivo ${fname}`;
-            res.render("home", {
-                mensaje: respuesta
-            });
+            respuesta = {
+            status:2,
+            info:`Error al cargar el archivo ${fname}`
+            }
+            // res.render("home", {
+            //     mensaje: respuesta
+            // });
+            res.status(501).json(respuesta);
         }
-
-        let respuesta2 = `El archivo ${fname} se cargo correctamente`;
-        res.redirect("/");
+        // let respuesta2 = `El archivo ${fname} se cargo correctamente`;
+        let messageok = {status:1,
+                         info:`El archivo ${fname} se cargo correctamente`}
+        console.log(messageok)
+        // res.redirect("/");
+        res.status(200).json(messageok);
     });
 }
 module.exports = funciones; 
