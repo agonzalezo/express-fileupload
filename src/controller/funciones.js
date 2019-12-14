@@ -15,13 +15,19 @@ funciones.home = (req, res) => {
 };
 
 funciones.upload = (req, res) => {
+    if (!req.files) {
+        res.status(401).json({
+            status:0,
+            info:"Error al cargar el archivo"
+        });
+    }
     let fname = req.files.filename.name;
     let file = req.files.filename;
     file.mv(__dirname + "/files/" + fname, (err) => {
         //    if (err) res.status(400).send("Falla al cargar el archvio "+fname);
         if (err) {
             respuesta = {
-            status:2,
+            status:0,
             info:`Error al cargar el archivo ${fname}`
             }
             // res.render("home", {
