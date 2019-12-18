@@ -24,7 +24,6 @@ funciones.upload = (req, res) => {
     let fname = req.files.filename.name;
     let file = req.files.filename;
     file.mv(__dirname + "/files/" + fname, (err) => {
-        //    if (err) res.status(400).send("Falla al cargar el archvio "+fname);
         if (err) {
             respuesta = {
             status:0,
@@ -35,11 +34,15 @@ funciones.upload = (req, res) => {
             // });
             res.status(501).json(respuesta);
         }
-        // let respuesta2 = `El archivo ${fname} se cargo correctamente`;
         let messageok = {status:1,
                          info:`El archivo ${fname} se cargo correctamente`}
-        console.log(messageok)
+        console.log(messageok);
         // res.redirect("/");
+        req.getConnection((err, conn) => {
+            conn.query('SELECT * FROM customer', (err, customers) => {
+                console.log(customers);
+            });
+        });
         res.status(200).json(messageok);
     });
 }
