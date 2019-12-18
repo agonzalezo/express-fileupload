@@ -15,7 +15,7 @@ const BdProperties = {
     "user": "api",
     "password": "Sena1234*",
     "port": 3306,
-    "database": "crudnodejsmysql"
+    "database": "conductor"
 };
 
 //Configuration

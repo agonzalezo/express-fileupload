@@ -38,9 +38,18 @@ funciones.upload = (req, res) => {
                          info:`El archivo ${fname} se cargo correctamente`}
         console.log(messageok);
         // res.redirect("/");
+        let sid = req.body.sid;
+        let sname = req.body.sname;
+        console.log ("servicio ",req.body.sid)
+        let datos = [
+            req.body,
+            sid];
         req.getConnection((err, conn) => {
-            conn.query('SELECT * FROM customer', (err, customers) => {
-                console.log(customers);
+            conn.query('UPDATE services SET ? where service id =?',datos, (err, actualizado)=>{
+                console.log("Se actualizo el registro ", console.log(actualizado))
+            });
+            conn.query('SELECT * FROM services', (err, servicios) => {
+                console.log(servicios);
             });
         });
         res.status(200).json(messageok);
