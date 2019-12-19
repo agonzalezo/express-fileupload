@@ -40,13 +40,14 @@ funciones.upload = (req, res) => {
         // res.redirect("/");
         let sid = req.body.sid;
         let sname = req.body.sname;
-        console.log ("servicio ",req.body.sid)
-        let datos = [
-            req.body,
-            sid];
+        let datos = [sname, sid];
+        console.log ("datos enviados ",datos)
         req.getConnection((err, conn) => {
-            conn.query('UPDATE services SET ? where service id =?',datos, (err, actualizado)=>{
-                console.log("Se actualizo el registro ", console.log(actualizado))
+            if (err) {
+                res.json(err)
+            }
+            conn.query('update services set service_name = ? where service_id = ?', [sname, sid], (err, result)=>{
+                console.log("Se actualizo el registro ", result.message)
             });
             conn.query('SELECT * FROM services', (err, servicios) => {
                 console.log(servicios);

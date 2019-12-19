@@ -11,7 +11,7 @@ const
 // port = process.env.PORT || 10080;
 
 const BdProperties = {
-    "host": "192.168.1.100",
+    "host": "compusystem.tech",
     "user": "api",
     "password": "Sena1234*",
     "port": 3306,
