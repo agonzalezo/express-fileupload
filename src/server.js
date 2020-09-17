@@ -13,7 +13,7 @@ const
 const BdProperties = {
     "host": "compusystem.tech",
     "user": "api",
-    "password": "Sena1234*",
+    "password": "pwd*",
     "port": 3306,
     "database": "conductor"
 };
